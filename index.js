@@ -1,15 +1,31 @@
+require('./config/config');
+
 const express = require('express')
 const app = express()
 
-console.log("entering the app");
-app.get('/', (req, res) => res.send('Hello from Google App Engine!' + process.env.PORT + 'humm'))
-console.log(process.env);
+
+var bodyParser = require('body-parser');
+
+console.log("entering the app" , "project " , process.env.PROJECT);
+
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+
+var user = require('./routes/userRoute');
+app.use('/user/',user);
+
+app.get('/', (req, res) => res.send('Hello from Google App Engine! ' + process.env.PORT  + ' ' + process.env.PROJECT))
 
 app.get('/teapot', (req, res) => {
   res.status(418).send("Hello I'm a teapot running on Node Standard GAE")
 })
 
-console.log("started to listen" +  process.env.PORT );
-app.listen(process.env.port || 8080, () =>
-  console.log('Example app listening on port 8080!')
+
+
+app.listen(process.env.PORT || 8080, () => {
+  console.log("started to listen" +  process.env.PORT );
+  console.log("GOOGLE_APPLICATION_CREDENTIALS :", process.env.GOOGLE_APPLICATION_CREDENTIALS);
+}
 )
+

@@ -1,0 +1,14 @@
+{
+    "test": {
+      "PORT": 3000,
+      "PROJECT":"stdtest2-217119"
+    },
+    "development": {
+      "PORT": 3000,
+      "PROJECT":"stdtest2-217119"
+    },
+    "cloud": {
+      "PROJECT":"stdtest2-217119"
+    }
+  }
+  

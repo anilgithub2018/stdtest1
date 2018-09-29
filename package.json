@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/anilgithub2018/stdtest1#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "@google-cloud/datastore": "^2.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.14.0",
+    "google-auth-library": "^2.0.0"
   }
 }
