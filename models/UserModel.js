@@ -2,14 +2,15 @@
 
 const kind = "Users";
 const Datastore = require('@google-cloud/datastore');
+debugger;
 
 var projectId = process.env.PROJECT;
 if( process.env.GOOGLE_CLOUD_PROJECT ){
     projectId = process.env.GOOGLE_CLOUD_PROJECT;
-    console.log('UserModel Project ID ', projectId);
+    console.log('UserModel: Project ID ', projectId);
 }
 
-console.log('projectId - from user', projectId);
+console.log('UserModel: projectId - from user', projectId);
 const datastore = new Datastore({
     projectId: projectId
 });
