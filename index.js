@@ -3,6 +3,7 @@ const app = express()
 
 console.log("entering the app");
 app.get('/', (req, res) => res.send('Hello from Google App Engine!' + process.env.port + 'humm'))
+console.log(process.env);
 
 app.get('/teapot', (req, res) => {
   res.status(418).send("Hello I'm a teapot running on Node Standard GAE")
