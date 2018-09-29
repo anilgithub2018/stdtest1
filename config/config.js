@@ -12,9 +12,10 @@ var local_os = process.platform;
 
 var config = require('./config.json');
 
-if (env === 'development' || env === 'test' || env === 'cloud') {
+if (env === 'development' || env === 'test' || env === 'qat') {
   var envConfig = config[env];
   Object.keys(envConfig).forEach((key) => {
     process.env[key] = envConfig[key];
   });
 }
+

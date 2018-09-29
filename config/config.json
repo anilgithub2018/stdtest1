@@ -7,7 +7,7 @@
       "PORT": 3000,
       "PROJECT":"stdtest2-217119"
     },
-    "cloud": {
+    "qat": {
       "PROJECT":"stdtest2-217119"
     }
   }
