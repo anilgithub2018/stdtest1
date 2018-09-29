@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 console.log("entering the app");
-app.get('/', (req, res) => res.send('Hello from Google App Engine!' + process.env.port + 'humm'))
+app.get('/', (req, res) => res.send('Hello from Google App Engine!' + process.env.PORT + 'humm'))
 console.log(process.env);
 
 app.get('/teapot', (req, res) => {
