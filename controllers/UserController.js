@@ -60,3 +60,22 @@ exports.addLandlord = async function(req,res,next){
         });
     
 }
+
+
+exports.getEntityList = async function(req,res,next){
+
+    let query = {};
+    query.role = "TENANT";
+    userModel.getEntityList(query,function(userList, error){
+        if(error){
+            res.send('Cannot get user list : ' + error, null, {
+                type: 0,
+                title: 'error',
+                message: 'Something went wrong. Cannot update details'
+            });
+        } else{
+            res.send(userList);
+        }
+    });    
+
+}

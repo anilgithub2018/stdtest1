@@ -40,4 +40,6 @@ router.post('/tenant/add', userController.addTenant);
  */
 router.post('/landlord/add', userController.addLandlord);
 
+router.get('/Users', userController.getEntityList );
+
 module.exports = router;

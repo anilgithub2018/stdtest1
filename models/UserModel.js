@@ -56,3 +56,27 @@ exports.findIdByEmail = function(email, callback){
         callback(null, error);
     });
 }
+
+exports.getEntityList = function(filter, callback){
+    const query = datastore.createQuery(kind);
+debugger;
+    datastore.runQuery(query).then(results => {
+        console.log(results);
+        const entities = results[0];
+        const info = results[1];
+
+        if (info.moreResults !== Datastore.NO_MORE_RESULTS) {
+            // If there are more results to retrieve, the end cursor is
+            // automatically set on `info`. To get this value directly, access
+            // the `endCursor` property.
+            return runPageQuery(info.endCursor).then(results => {
+                // Concatenate entities
+                results[0] = entities.concat(results[0]);
+                return results;
+            });
+        }
+        callback(entities,null);
+    }).catch(function(error){
+        callback(null, error);
+    });    
+}
