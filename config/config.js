@@ -11,7 +11,7 @@ var local_os = process.platform;
 // }
 
 var config = require('./config.json');
-debugger;
+
 if (env === 'development' || env === 'test' ) {
   var envConfig = config[env];
   Object.keys(envConfig).forEach((key) => {

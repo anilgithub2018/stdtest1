@@ -16,7 +16,7 @@ exports.addTenant = async function(req,res,next){
 
     let query = {};
     query.email = req.body.email;
-    query.username = req.body.name;
+    query.username = req.body.username;
     query.role = "TENANT";
     // query.token = token;
     userModel.addUser(query,function(user, error){
@@ -74,7 +74,10 @@ exports.getEntityList = async function(req,res,next){
                 message: 'Something went wrong. Cannot update details'
             });
         } else{
-            res.send(userList);
+            debugger;
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(userList));
+            // res.send(userList);
         }
     });    
 

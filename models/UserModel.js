@@ -2,7 +2,7 @@
 
 const kind = "Users";
 const Datastore = require('@google-cloud/datastore');
-debugger;
+
 
 var projectId = process.env.PROJECT;
 if( process.env.GOOGLE_CLOUD_PROJECT ){
@@ -59,7 +59,7 @@ exports.findIdByEmail = function(email, callback){
 
 exports.getEntityList = function(filter, callback){
     const query = datastore.createQuery(kind);
-debugger;
+
     datastore.runQuery(query).then(results => {
         console.log(results);
         const entities = results[0];

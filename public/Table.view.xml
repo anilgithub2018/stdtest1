@@ -8,12 +8,14 @@
 		showNavButton="false">
 
 		<content>
-			<Table id="idProductsTable" growing="true" growingThreshold="10">
+			<Table id="idProductsTable" growing="true" growingThreshold="100">
 				<headerToolbar>
 					<OverflowToolbar id="otbSubheader">
-						<Title text="Products" level="H2" />
+						<Title text="Users" level="H2" />
 						<ToolbarSpacer />
-						<Button id="editButton" text="Edit" type="Transparent"
+						<Button id="addButton" text="Add" type="Transparent"
+							press="onAdd" />
+						<Button id="editButton" text="Edit(not working)" type="Transparent"
 							press="onEdit" />
 						<Button id="saveButton" text="Save" type="Transparent"
 							press="onSave" visible="false" />
@@ -23,41 +25,21 @@
 				</headerToolbar>
 				<columns>
 					<Column width="12em">
-						<Text text="Product" />
+						<Text text="User Name" />
 					</Column>
-					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-						<Text text="Quantity" />
+					<Column  >
+						<Text text="Role" />
 					</Column>
-					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
-						<Text text="Weight" />
-					</Column>
-					<Column hAlign="End">
-						<Text text="Price" />
+					<Column >
+						<Text text="Email" />
 					</Column>
 				</columns>
 				<items>
 					<ColumnListItem>
 						<cells>
-							<ObjectIdentifier title="{Name}" text="{ProductId}" />
-							<ObjectNumber
-								number="{
-								path:'Quantity',
-								type: 'sap.ui.model.type.String',
-								formatOptions: {showMeasure: false}
-							}"
-								unit="{UoM}" />
-							<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"
-								state="{
-							path: 'WeightMeasure',
-							formatter: 'sap.m.sample.TableEditable.Formatter.weightState'
-						}" />
-							<ObjectNumber
-								number="{
-								parts:[{path:'Price'},{path:'CurrencyCode'}],
-								type: 'sap.ui.model.type.Currency',
-								formatOptions: {showMeasure: false}
-							}"
-								unit="{CurrencyCode}" />
+							<Text text="{oModelUser>username}" />
+							<Text text="{oModelUser>role}" />
+							<Text text="{oModelUser>email}" />
 						</cells>
 					</ColumnListItem>
 				</items>
