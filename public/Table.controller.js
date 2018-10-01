@@ -6,7 +6,7 @@ sap.ui.define([
 	var TableController = Controller.extend("sap.m.sample.TableEditable.Table", {
 
 		onInit: function(evt) {
-debugger;
+
 			var that = this;
 			var vhostname = location.hostname;
 			if ( vhostname.indexOf('localhost') !== -1 )
