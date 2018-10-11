@@ -21,6 +21,8 @@ const userController = require('../controllers/UserController');
 }
  */
 router.post('/tenant/add', userController.addTenant);
+router.get('/tenant/add', userController.addTenantGet);
+router.options('/tenant/add', userController.addTenantGet);
 
 /**
  * @api {post} /user/landlord/add Add new Landlord
