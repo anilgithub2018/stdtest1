@@ -17,13 +17,13 @@ const datastore = new Datastore({
 const transaction = datastore.transaction();
 
 exports.addUser = function(user, callback){
-    debugger;
     let email = user.email;
     const query = datastore.createQuery(kind).filter('email', '=', email);
     datastore.runQuery(query).then(function(results){
         console.log(results[0].length);
         if(results[0].length!=0){
-            return callback(results[0], null);
+            exports.updateEntity(user, results[0], callback );
+            // return callback(results[0], null);
         }else{
             console.log("Saving user");
             const userSave = {
@@ -47,6 +47,38 @@ exports.addUser = function(user, callback){
         callback(null, error);
     });
     
+}
+
+exports.updateEntity = function(userNew, QueryList, callback) {
+  debugger;  
+    QueryList.forEach(UserEntity => {
+        const userKey = UserEntity[datastore.KEY];
+
+        transaction
+        .run()
+        .then(() => transaction.get(userKey))
+        .then(results => {
+          const userDbRecord    = results[0];
+          userDbRecord.email    = userNew.email;
+          userDbRecord.username = userNew.username;
+          userDbRecord.password = userNew.password;
+          userDbRecord.role     = userNew.role;
+
+          transaction.save({
+            key: userKey,
+            data: userDbRecord,
+          });
+          return transaction.commit();
+        })
+        .then(() => {
+          // The transaction completed successfully.
+          console.log(`User ${userKey.id} updated successfully.`);
+        })
+        .catch(() => transaction.rollback());
+          
+
+      });
+        
 }
 
 exports.findIdByEmail = function(email, callback){

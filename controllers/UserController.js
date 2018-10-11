@@ -5,7 +5,7 @@ const userModel = require("../models/UserModel");
 // const client = new OAuth2Client("424866252249-rnmr12b3jo5ab7iacdrh1q56jcrq3al4.apps.googleusercontent.com");
 
 exports.addTenantGet = async function(req,res,next){
-      debugger;
+
       res.header('Access-Control-Allow-Origin', req.headers.origin)
       res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
       if (req.method == 'OPTIONS') res.send(JSON.stringify({"Result":"Options"}));
@@ -23,8 +23,6 @@ exports.addTenant = async function(req,res,next){
     //     audience: "424866252249-rnmr12b3jo5ab7iacdrh1q56jcrq3al4.apps.googleusercontent.com"
     // });
     // console.log(token);
-      debugger;
-
     res.header('Access-Control-Allow-Origin', req.headers.origin)
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
