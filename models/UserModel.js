@@ -73,6 +73,7 @@ exports.updateEntity = function(userNew, QueryList, callback) {
         .then(() => {
           // The transaction completed successfully.
           console.log(`User ${userKey.id} updated successfully.`);
+          callback(userNew, null);
         })
         .catch(() => transaction.rollback());
           
@@ -80,6 +81,24 @@ exports.updateEntity = function(userNew, QueryList, callback) {
       });
         
 }
+
+exports.deleteEntity = function(userNew, QueryList, callback) {
+    debugger;  
+      QueryList.forEach(UserEntity => {
+          const userKey = UserEntity[datastore.KEY];
+
+          const deleteKey = datastore.key(['Users', userKey.id]);
+          datastore.delete(userKey)
+          .then(() => {
+            console.log(`User ${userKey.id} deleted successfully.`);
+          })
+          .catch(err => {
+            console.error('ERROR:', err);
+          });          
+  
+        });
+          
+  }
 
 exports.findIdByEmail = function(email, callback){
     const query = datastore.createQuery(kind).filter('email', '=', email);
